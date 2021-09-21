@@ -1,7 +1,7 @@
 import { getRssFeed, RssFeed } from "./services/medium-feed";
 import { MediumArticlesComponent } from "./components/medium-articles";
 import "./components/medium-articles";
-import "./components/medium-header.js";
+import "./components/medium-header";
 
 const css = `
 <style>

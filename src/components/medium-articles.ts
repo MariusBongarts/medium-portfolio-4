@@ -1,6 +1,7 @@
 // @ts-check
-import "./medium-article-card.js";
-import { encodeObject, decodeObject } from "../services/helper";
+import "./medium-article-card";
+import { encodeObject } from "../services/helper";
+import { Article } from "../services/medium-feed";
 const css = `
 <style>
 .cards {
@@ -12,9 +13,9 @@ const css = `
 `;
 
 export class MediumArticlesComponent extends HTMLElement {
-  private _articles: any;
+  private _articles: Article[] = [];
   get articles() {
-    return this._articles || [];
+    return this._articles;
   }
   set articles(articles) {
     this._articles = articles;

@@ -5,6 +5,7 @@ export interface Article {
   author: string;
   pubDate: string;
   userLink: string;
+  link: string;
 }
 
 export interface Feed {

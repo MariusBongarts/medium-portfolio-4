@@ -1,11 +1,10 @@
-// @ts-check
 import { decodeObject } from "../services/helper";
-import "./medium-category-chip.js";
+import "./medium-category-chip";
 
 const css = ``;
 class MediumCategoryChips extends HTMLElement {
-  get categories() {
-    return decodeObject(this.getAttribute("categories"));
+  get categories(): string[] {
+    return decodeObject<string[]>(this.getAttribute("categories") ?? "{}");
   }
 
   constructor() {
@@ -17,7 +16,7 @@ class MediumCategoryChips extends HTMLElement {
   connectedCallback() {}
 
   render() {
-    this.shadowRoot.innerHTML = `
+    this.shadowRoot!.innerHTML = `
     ${css}
     <div class="chips">
     ${this.categories
