@@ -1,5 +1,5 @@
 // @ts-check
-import { encodeObject, decodeObject } from "../services/helper.js";
+import { encodeObject, decodeObject } from "../services/helper";
 import "./medium-category-chips.js";
 
 const styled = ({ thumbnail }) => `

@@ -1,5 +1,5 @@
 // @ts-check
-import { decodeObject } from "../services/helper.js";
+import { decodeObject } from "../services/helper";
 import "./medium-category-chip.js";
 
 const css = ``;

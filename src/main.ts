@@ -1,5 +1,6 @@
-import { getRssFeed } from "./services/medium-feed.js";
-import "./components/medium-articles.js";
+import { getRssFeed, RssFeed } from "./services/medium-feed";
+import { MediumArticlesComponent } from "./components/medium-articles";
+import "./components/medium-articles";
 import "./components/medium-header.js";
 
 const css = `
@@ -29,20 +30,20 @@ const css = `
 
 const DEFAULT_MAX_ARTICLES = 10;
 class MediumPortfolio extends HTMLElement {
-  rssFeed;
+  rssFeed!: RssFeed;
 
   get hideHeader() {
     return this.getAttribute("hideHeader") !== null;
   }
 
   get mediumUsername() {
-    return this.getAttribute("username");
+    return this.getAttribute("username") ?? "";
   }
 
   get maxArticles() {
     const maxArticles =
       this.getAttribute("maxArticles") ?? DEFAULT_MAX_ARTICLES;
-    return !isNaN(+maxArticles) ? maxArticles : DEFAULT_MAX_ARTICLES;
+    return !isNaN(+maxArticles) ? +maxArticles : DEFAULT_MAX_ARTICLES;
   }
 
   constructor() {
@@ -60,7 +61,9 @@ class MediumPortfolio extends HTMLElement {
   }
 
   setArticles() {
-    const mediumArticles = document.querySelector("medium-articles") as any;
+    const mediumArticles = document.querySelector(
+      "medium-articles"
+    ) as MediumArticlesComponent;
     mediumArticles.articles = this.rssFeed.articles;
   }
 

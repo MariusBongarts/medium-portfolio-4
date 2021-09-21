@@ -1,6 +1,6 @@
 // @ts-check
 import "./medium-article-card.js";
-import { encodeObject, decodeObject } from "../services/helper.js";
+import { encodeObject, decodeObject } from "../services/helper";
 const css = `
 <style>
 .cards {
@@ -12,6 +12,7 @@ const css = `
 `;
 
 export class MediumArticlesComponent extends HTMLElement {
+  private _articles: any;
   get articles() {
     return this._articles || [];
   }
@@ -26,13 +27,13 @@ export class MediumArticlesComponent extends HTMLElement {
   }
 
   render() {
-    this.shadowRoot.innerHTML = `
+    this.shadowRoot!.innerHTML = `
     ${css}
     <section class="cards">
 
     ${this.articles
       .map(
-        (article) =>
+        (article: any) =>
           `<medium-article-card article=${encodeObject(
             article
           )}></medium-article-card>`
